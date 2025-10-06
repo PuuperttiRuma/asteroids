@@ -6,7 +6,6 @@ import pygame
 class Player(CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
-
         self.rotation = 0
 
     def triangle(self):
@@ -21,6 +20,10 @@ class Player(CircleShape):
     def draw(self, screen):
         pygame.draw.polygon(screen, color="white",
                             points=self.triangle(), width=2)
+
+        # Debug hitbox
+        pygame.draw.circle(screen, color="red", center=self.position,
+                           radius=self.radius, width=1)
 
     def rotate(self, dt):
         self.rotation += PLAYER_TURN_SPEED * dt
